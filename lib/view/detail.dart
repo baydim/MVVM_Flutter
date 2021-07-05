@@ -35,7 +35,20 @@ class _DetailState extends State<Detail> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Text(d == null ? "memuat" : d.data.firstName),
+          if (d == null)
+            Center(
+              child: CircularProgressIndicator(),
+            )
+          else
+            Column(
+              children: [
+                Text(d.data.firstName),
+                Text(d.data.lastName),
+                Text(d.data.email),
+                Text(d.data.id.toString()),
+                Image.network(d.data.avatar),
+              ],
+            ),
           TextButton(
               onPressed: () {
                 try {
